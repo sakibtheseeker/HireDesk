@@ -1,0 +1,265 @@
+﻿using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
+using System.Net;
+using System.Net.Mail;
+using System.Web.UI;
+
+namespace HireDesk_Application
+{
+    public partial class Resume : Page
+    {
+        string connStr = ConfigurationManager.ConnectionStrings["dbconn"].ConnectionString;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                EnableForm();
+            }
+        }
+
+        private void DisableForm()
+        {
+            formWrapper.Attributes["class"] = "locked-form";
+            Button1.Enabled = false;
+
+        }
+
+        private void EnableForm()
+        {
+            formWrapper.Attributes["class"] = "";
+            Button1.Enabled = true;
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DropDownList1.SelectedValue == "Others")
+            {
+                DisableForm();
+                ShowAlert("Currently we hire only IT background candidates.");
+
+            }
+            else
+                EnableForm();
+        }
+
+    
+        protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (DropDownList2.SelectedValue == "Fresher")
+            {
+                
+                salaryWrapper.Attributes["class"] = "locked-form";
+
+                TextBox4.Text = "";
+                TextBox5.Text = "";
+                TextBox6.Text = "";
+            }
+            else
+            {
+                
+                salaryWrapper.Attributes["class"] = "";
+            }
+        }
+
+        private void ShowAlert(string msg)
+        {
+            Response.Write($"<script>alert('{msg}');</script>");
+        }
+
+
+        private bool IsDuplicateUser(string email, string contact)
+        {
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                SqlCommand cmd = new SqlCommand(
+                    "SELECT COUNT(*) FROM Applicant WHERE aEmail=@email OR aContact=@contact",
+                    con);
+
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@contact", contact);
+
+                con.Open();
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                return count > 0;
+            }
+        }
+
+
+        private int AddFresherApplicant()
+        {
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                string q = @"exec AddFresherApplicant 
+             @educationStream, @experienceType, @aName,@aEmail, @aContact";
+
+                SqlCommand cmd = new SqlCommand(q, con);
+
+                cmd.Parameters.AddWithValue("@educationStream", DropDownList1.SelectedValue);
+                cmd.Parameters.AddWithValue("@experienceType", "Fresher");
+                cmd.Parameters.AddWithValue("@aName", TextBox1.Text);
+                cmd.Parameters.AddWithValue("@aEmail", TextBox2.Text);
+                cmd.Parameters.AddWithValue("@aContact", TextBox3.Text);
+
+                con.Open();
+                int aid = Convert.ToInt32(cmd.ExecuteScalar());
+                con.Close();
+
+                return aid;
+
+            }
+        }
+
+        private void AddExperiencedApplicant()
+        {
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                string q = @"exec AddExperiencedApplicant
+             @educationStream,@experienceType,@aName,@aEmail,@aContact,@aCTC,@aECTC,@aNoticePeriod";
+
+                SqlCommand cmd = new SqlCommand(q, con);
+
+                cmd.Parameters.AddWithValue("@educationStream", DropDownList1.SelectedValue);
+                cmd.Parameters.AddWithValue("@experienceType", "Experienced");
+                cmd.Parameters.AddWithValue("@aName", TextBox1.Text);
+                cmd.Parameters.AddWithValue("@aEmail", TextBox2.Text);
+                cmd.Parameters.AddWithValue("@aContact", TextBox3.Text);
+                cmd.Parameters.AddWithValue("@aCTC", TextBox4.Text);
+                cmd.Parameters.AddWithValue("@aECTC", TextBox5.Text);
+                cmd.Parameters.AddWithValue("@aNoticePeriod", TextBox6.Text);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+        }
+
+
+        private void SendMailToHR(bool attachFromUpload)
+        {
+            string fromEmail = ConfigurationManager.AppSettings["FROM_EMAIL"];
+            string password = ConfigurationManager.AppSettings["FROM_PASSWORD"];
+            string hrEmail = ConfigurationManager.AppSettings["HR_EMAIL"];
+
+            MailMessage mail = new MailMessage(fromEmail, hrEmail);
+            mail.Subject = "New Application - HireDesk";
+
+            mail.Body =
+                "Name: " + TextBox1.Text + "\n" +
+                "Email: " + TextBox2.Text + "\n" +
+                "Contact: " + TextBox3.Text + "\n" +
+                "Experience: " + DropDownList2.SelectedValue;
+
+
+            if (attachFromUpload && FileUpload1.HasFile)
+            {
+                mail.Attachments.Add(
+                    new Attachment(FileUpload1.PostedFile.InputStream,
+                                   Path.GetFileName(FileUpload1.FileName)));
+            }
+
+            if (!attachFromUpload && Session["resumePath"] != null)
+            {
+                mail.Attachments.Add(
+                    new Attachment(Session["resumePath"].ToString()));
+            }
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            smtp.Credentials = new NetworkCredential(fromEmail, password);
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+        }
+
+
+        private void SendMailToApplicant()
+        {
+            string fromEmail = ConfigurationManager.AppSettings["FROM_EMAIL"];
+            string password = ConfigurationManager.AppSettings["FROM_PASSWORD"];
+
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress(fromEmail);
+
+
+            mail.To.Add(TextBox2.Text);
+
+            mail.Subject = "HireDesk - Application Received";
+
+            mail.Body =
+                "Dear " + TextBox1.Text + ",\n\n" +
+                "Thank you for applying through HireDesk.\n\n" +
+                "We have received your application with the following details:\n\n" +
+                "Name: " + TextBox1.Text + "\n" +
+                "Email: " + TextBox2.Text + "\n" +
+                "Contact: " + TextBox3.Text + "\n" +
+                "Stream: " + DropDownList1.SelectedValue + "\n" +
+                "Experience: " + DropDownList2.SelectedValue + "\n\n" +
+                "Our HR team will contact you shortly.\n\n" +
+                "Regards,\nHireDesk Team";
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            smtp.Credentials = new NetworkCredential(fromEmail, password);
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+        }
+
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (DropDownList1.SelectedValue == "Others")
+            {
+                ShowAlert("Non-IT background not eligible");
+                return;
+            }
+
+            if (IsDuplicateUser(TextBox2.Text, TextBox3.Text))
+            {
+                ShowAlert("You have already applied");
+                return;
+            }
+
+
+            if (DropDownList2.SelectedValue == "Fresher")
+            {
+                
+                string resumePath = "";
+
+                if (FileUpload1.HasFile)
+                {
+                    string folderPath = Server.MapPath("~/Resumes/");
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+
+                    string fileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(FileUpload1.FileName);
+                    resumePath = Path.Combine(folderPath, fileName);
+
+                    FileUpload1.SaveAs(resumePath);
+                }
+
+                int aid = AddFresherApplicant();
+
+                Session["aid"] = aid;
+                Session["resumePath"] = resumePath;   
+                Session["userEmail"] = TextBox2.Text;
+                Session["userName"] = TextBox1.Text;
+
+                Response.Redirect("Slot.aspx");
+            }
+
+            else
+            {
+                AddExperiencedApplicant();
+                SendMailToHR(true);
+                SendMailToApplicant();
+                ShowAlert("Application submitted successfully");
+            }
+        }
+
+        
+    }
+}

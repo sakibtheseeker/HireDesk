@@ -1,0 +1,135 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\hiredesk application\\slot.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|solutionrelative:hiredesk application\\slot.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|c:\\users\\sakib\\source\\repos\\hiredesk application\\hiredesk application\\resume.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|solutionrelative:hiredesk application\\resume.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\hiredesk application\\slot.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|solutionrelative:hiredesk application\\slot.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\hiredesk application\\thankyou.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|solutionrelative:hiredesk application\\thankyou.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\hiredesk application\\resume.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|solutionrelative:hiredesk application\\resume.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\hiredesk application\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|solutionrelative:hiredesk application\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\hiredesk application\\thankyou.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2D928F0-3D3D-4833-8C2C-43C9AA9D8AB1}|HireDesk Application\\HireDesk Application.csproj|solutionrelative:hiredesk application\\thankyou.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 172,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Slot.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\Slot.aspx.cs",
+              "RelativeDocumentMoniker": "HireDesk Application\\Slot.aspx.cs",
+              "ToolTip": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\Slot.aspx.cs",
+              "RelativeToolTip": "HireDesk Application\\Slot.aspx.cs",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAowHMAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T18:41:06.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ThankYou.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\ThankYou.aspx.cs",
+              "RelativeDocumentMoniker": "HireDesk Application\\ThankYou.aspx.cs",
+              "ToolTip": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\ThankYou.aspx.cs",
+              "RelativeToolTip": "HireDesk Application\\ThankYou.aspx.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-22T03:12:45.256Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ThankYou.aspx",
+              "DocumentMoniker": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\ThankYou.aspx",
+              "RelativeDocumentMoniker": "HireDesk Application\\ThankYou.aspx",
+              "ToolTip": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\ThankYou.aspx",
+              "RelativeToolTip": "HireDesk Application\\ThankYou.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-12-22T03:12:33.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Resume.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\Resume.aspx.cs",
+              "RelativeDocumentMoniker": "HireDesk Application\\Resume.aspx.cs",
+              "ToolTip": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\Resume.aspx.cs",
+              "RelativeToolTip": "HireDesk Application\\Resume.aspx.cs",
+              "ViewState": "AgIAAPAAAAAAAAAAAAAkwHgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-21T18:40:08.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\Web.config",
+              "RelativeDocumentMoniker": "HireDesk Application\\Web.config",
+              "ToolTip": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\Web.config",
+              "RelativeToolTip": "HireDesk Application\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-12-21T18:31:18.858Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Slot.aspx",
+              "DocumentMoniker": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\Slot.aspx",
+              "RelativeDocumentMoniker": "HireDesk Application\\Slot.aspx",
+              "ToolTip": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\Slot.aspx",
+              "RelativeToolTip": "HireDesk Application\\Slot.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-12-21T16:10:43.288Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Resume.aspx",
+              "DocumentMoniker": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\Resume.aspx",
+              "RelativeDocumentMoniker": "HireDesk Application\\Resume.aspx",
+              "ToolTip": "C:\\Users\\Sakib\\source\\repos\\HireDesk Application\\HireDesk Application\\Resume.aspx",
+              "RelativeToolTip": "HireDesk Application\\Resume.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-12-21T16:10:22.319Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
