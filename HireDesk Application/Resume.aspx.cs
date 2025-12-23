@@ -11,6 +11,8 @@ namespace HireDesk_Application
 {
     public partial class Resume : Page
     {
+       
+        
         string connStr = ConfigurationManager.ConnectionStrings["dbconn"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -73,15 +75,12 @@ namespace HireDesk_Application
 
         private bool IsDuplicateUser(string email, string contact)
         {
+            string userEmail = email;
+            string userContact = contact;
+            string q = $"exec CheckDuplicateApplicant '{userEmail}' ,'{userContact}'";
             using (SqlConnection con = new SqlConnection(connStr))
             {
-                SqlCommand cmd = new SqlCommand(
-                    "SELECT COUNT(*) FROM Applicant WHERE aEmail=@email OR aContact=@contact",
-                    con);
-
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@contact", contact);
-
+                SqlCommand cmd = new SqlCommand(q,con);
                 con.Open();
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
                 return count > 0;
@@ -93,20 +92,17 @@ namespace HireDesk_Application
         {
             using (SqlConnection con = new SqlConnection(connStr))
             {
-                string q = @"exec AddFresherApplicant 
-             @educationStream, @experienceType, @aName,@aEmail, @aContact";
+                string educationStream = DropDownList1.SelectedValue.Replace("'", "''");
+                string experienceType = "Fresher";
+                string aName = TextBox1.Text.Replace("'", "''");
+                string aEmail = TextBox2.Text.Replace("'", "''");
+                string aContact = TextBox3.Text;
+                string q = $"exec AddFresherApplicant '{educationStream}', '{experienceType}', '{aName}','{aEmail}', '{aContact}' ";
 
                 SqlCommand cmd = new SqlCommand(q, con);
-
-                cmd.Parameters.AddWithValue("@educationStream", DropDownList1.SelectedValue);
-                cmd.Parameters.AddWithValue("@experienceType", "Fresher");
-                cmd.Parameters.AddWithValue("@aName", TextBox1.Text);
-                cmd.Parameters.AddWithValue("@aEmail", TextBox2.Text);
-                cmd.Parameters.AddWithValue("@aContact", TextBox3.Text);
-
                 con.Open();
                 int aid = Convert.ToInt32(cmd.ExecuteScalar());
-                con.Close();
+                
 
                 return aid;
 
@@ -117,24 +113,21 @@ namespace HireDesk_Application
         {
             using (SqlConnection con = new SqlConnection(connStr))
             {
-                string q = @"exec AddExperiencedApplicant
-             @educationStream,@experienceType,@aName,@aEmail,@aContact,@aCTC,@aECTC,@aNoticePeriod";
+
+                string educationStream = DropDownList1.SelectedValue.Replace("'", "''");
+                string experienceType = "Experienced";
+                string aName = TextBox1.Text.Replace("'", "''");
+                string aEmail = TextBox2.Text.Replace("'", "''");
+                string aContact = TextBox3.Text;
+                decimal aCTC = string.IsNullOrWhiteSpace(TextBox4.Text) ? 0 : Convert.ToDecimal(TextBox4.Text);
+                decimal aECTC = string.IsNullOrWhiteSpace(TextBox5.Text) ? 0 : Convert.ToDecimal(TextBox5.Text);
+                string aNoticePeriod = TextBox6.Text.Replace("'", "''");
+                string q = $"exec AddExperiencedApplicant '{educationStream}','{experienceType}','{aName}','{aEmail}','{aContact}','{aCTC}','{aECTC}','{aNoticePeriod}' ";
 
                 SqlCommand cmd = new SqlCommand(q, con);
-
-                cmd.Parameters.AddWithValue("@educationStream", DropDownList1.SelectedValue);
-                cmd.Parameters.AddWithValue("@experienceType", "Experienced");
-                cmd.Parameters.AddWithValue("@aName", TextBox1.Text);
-                cmd.Parameters.AddWithValue("@aEmail", TextBox2.Text);
-                cmd.Parameters.AddWithValue("@aContact", TextBox3.Text);
-                cmd.Parameters.AddWithValue("@aCTC", TextBox4.Text);
-                cmd.Parameters.AddWithValue("@aECTC", TextBox5.Text);
-                cmd.Parameters.AddWithValue("@aNoticePeriod", TextBox6.Text);
-
                 con.Open();
                 cmd.ExecuteNonQuery();
-                con.Close();
-
+           
             }
         }
 
